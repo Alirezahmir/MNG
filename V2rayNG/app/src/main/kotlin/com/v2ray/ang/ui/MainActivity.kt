@@ -21,6 +21,7 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.ItemTouchHelper
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -93,6 +94,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
 
+        binding.login_username_button.setOnClickListener {
+            showUsernameDialog()
+        }
+
+        binding.get_rot_config_button7.setOnClickListener {
+            fetchFreeConfigs()
+        }
+
         val callback = SimpleItemTouchHelperCallback(adapter)
         mItemTouchHelper = ItemTouchHelper(callback)
         mItemTouchHelper?.attachToRecyclerView(binding.recyclerView)
@@ -103,7 +112,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
-        binding.version.text = "v${BuildConfig.VERSION_NAME} (${SpeedtestUtil.getLibVersion()})"
+        binding.version.text = "BlacKTun"
 
         setupViewModel()
         copyAssets()
@@ -213,124 +222,26 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onPause()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.import_qrcode -> {
-            importQRcode(true)
-            true
-        }
-        R.id.import_clipboard -> {
-            importClipboard()
-            true
-        }
-        R.id.import_manually_vmess -> {
-            importManually(EConfigType.VMESS.value)
-            true
-        }
-        R.id.import_manually_vless -> {
-            importManually(EConfigType.VLESS.value)
-            true
-        }
-        R.id.import_manually_ss -> {
-            importManually(EConfigType.SHADOWSOCKS.value)
-            true
-        }
-        R.id.import_manually_socks -> {
-            importManually(EConfigType.SOCKS.value)
-            true
-        }
-        R.id.import_manually_trojan -> {
-            importManually(EConfigType.TROJAN.value)
-            true
-        }
-        R.id.import_config_custom_clipboard -> {
-            importConfigCustomClipboard()
-            true
-        }
-        R.id.import_config_custom_local -> {
-            importConfigCustomLocal()
-            true
-        }
-        R.id.import_config_custom_url -> {
-            importConfigCustomUrlClipboard()
-            true
-        }
-        R.id.import_config_custom_url_scan -> {
-            importQRcode(false)
-            true
-        }
-
-//        R.id.sub_setting -> {
-//            startActivity<SubSettingActivity>()
-//            true
-//        }
-
         R.id.sub_update -> {
             importConfigViaSub()
             true
         }
-
-        R.id.export_all -> {
-            if (AngConfigManager.shareNonCustomConfigsToClipboard(this, mainViewModel.serverList) == 0) {
-                toast(R.string.toast_success)
-            } else {
-                toast(R.string.toast_failure)
-            }
-            true
-        }
-
-        R.id.ping_all -> {
-            mainViewModel.testAllTcping()
-            true
-        }
-
         R.id.real_ping_all -> {
             mainViewModel.testAllRealPing()
             true
         }
-
         R.id.service_restart -> {
             restartV2Ray()
             true
         }
-
-        R.id.del_all_config -> {
-            AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
-                    .setPositiveButton(android.R.string.ok) { _, _ ->
-                        MmkvManager.removeAllServer()
-                        mainViewModel.reloadServerList()
-                    }
-                    .show()
-            true
-        }
-        R.id.del_duplicate_config-> {
-            AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    mainViewModel.removeDuplicateServer()
-                }
-                .show()
-            true
-        }
-        R.id.del_invalid_config -> {
-            AlertDialog.Builder(this).setMessage(R.string.del_config_comfirm)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    MmkvManager.removeInvalidServer()
-                    mainViewModel.reloadServerList()
-                }
-                .show()
-            true
-        }
-        R.id.sort_by_test_results -> {
-            MmkvManager.sortByTestResults()
-            mainViewModel.reloadServerList()
-            true
-        }
-        R.id.filter_config -> {
-            mainViewModel.filterConfig(this)
+        R.id.telegram_channel -> {
+            Utils.openUri(this, "https://t.me/DesignHesam")
             true
         }
 
@@ -654,30 +565,96 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         when (item.itemId) {
-            //R.id.server_profile -> activityClass = MainActivity::class.java
-            R.id.sub_setting -> {
-                startActivity(Intent(this, SubSettingActivity::class.java))
+            R.id.network_tools -> {
+                Utils.openUri(this, "https://t.me/DesignHesam")
             }
-            R.id.settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java)
-                        .putExtra("isRunning", mainViewModel.isRunning.value == true))
+            R.id.saifon_settings -> {
+                Utils.openUri(this, "https://t.me/DesignHesam")
             }
-            R.id.user_asset_setting -> {
+            R.id.dns_scanner -> {
+                Utils.openUri(this, "https://t.me/DesignHesam")
+            }
+            R.id.geo_files -> {
                 startActivity(Intent(this, UserAssetActivity::class.java))
-            }
-            R.id.feedback -> {
-                Utils.openUri(this, AppConfig.v2rayNGIssues)
-            }
-            R.id.promotion -> {
-                Utils.openUri(this, "${Utils.decode(AppConfig.promotionUrl)}?t=${System.currentTimeMillis()}")
-            }
-            R.id.logcat -> {
-                startActivity(Intent(this, LogcatActivity::class.java))
             }
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun fetchSubscriptionConfigs(username: String) {
+        val subscriptionUrl = "https://alirez.n-cpanel.xyz/Sub/Plans/Full.txt"
+        val userSubscriptionUrl = "https://alirez.n-cpanel.xyz/Sub/Plans/${username}.php?sub=${username}&plan=one_year"
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val subscriptionContent = Utils.getUrlContentWithCustomUserAgent(subscriptionUrl)
+                if (subscriptionContent.contains("sub=${username}")) {
+                    val configText = Utils.getUrlContentWithCustomUserAgent(userSubscriptionUrl)
+                    launch(Dispatchers.Main) {
+                        importCustomizeConfig(configText)
+                        toast(getString(R.string.config_loaded_success))
+                    }
+                    launch(Dispatchers.IO) {
+                        delay(500)
+                        launch(Dispatchers.Main) {
+                            mainViewModel.testAllRealPing()
+                        }
+                    }
+                } else {
+                    launch(Dispatchers.Main) {
+                        toast(getString(R.string.invalid_username))
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                launch(Dispatchers.Main) {
+                    toast(getString(R.string.invalid_username))
+                }
+            }
+        }
+    }
+
+    private fun fetchFreeConfigs() {
+        val freeConfigUrl = "https://alirez.n-cpanel.xyz/Sub/Plans/Free.txt"
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                MmkvManager.removeAllServer()
+                val configText = Utils.getUrlContentWithCustomUserAgent(freeConfigUrl)
+                launch(Dispatchers.Main) {
+                    importCustomizeConfig(configText)
+                    toast(getString(R.string.config_loaded_success))
+                }
+                launch(Dispatchers.IO) {
+                    delay(500)
+                    launch(Dispatchers.Main) {
+                        mainViewModel.testAllRealPing()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                launch(Dispatchers.Main) {
+                    toast(getString(R.string.toast_failure))
+                }
+            }
+        }
+    }
+
+    private fun showUsernameDialog() {
+        val input = EditText(this)
+        input.hint = getString(R.string.enter_username)
+        
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.login_with_username))
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val username = input.text.toString().trim()
+                if (username.isNotEmpty()) {
+                    fetchSubscriptionConfigs(username)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 }

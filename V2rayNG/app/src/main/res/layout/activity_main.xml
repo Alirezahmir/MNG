@@ -24,48 +24,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_ads_background"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/report_flag_button"
-                android:layout_width="@dimen/png_height"
-                android:layout_height="@dimen/png_height"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="3dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_gravity="center"
-                android:src="@drawable/report_flag1"
-                app:tint="?attr/colorMainText" />
-
-
-            <TextView
-                android:id="@+id/textView_ADS_main1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:autoLink="web"
-                android:linksClickable="true"
-                android:layout_weight="10"
-                android:textColor="@color/color_ads_text"
-                android:text="https://t.me/mahsa_net" />
-
-            <TextView
-                android:id="@+id/textView_ADS_fix"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:textColor="@color/color_sponsor_fix"
-                android:text="اهدا کننده:" />
-
-        </LinearLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -103,68 +61,32 @@
 
 
                         <Button
+                            android:id="@+id/login_username_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="1dp"
+                            android:layout_weight="2.5"
+                            android:textColor="@color/color_btn_get_txt"
+                            android:backgroundTint="@color/color_btn_get_config"
+                            android:focusable="true"
+                            android:nextFocusLeft="@+id/recycler_view"
+                            android:text="@string/login_with_username" />
+
+
+                        <Button
                             android:id="@+id/get_rot_config_button7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="1dp"
-                            android:layout_weight="2"
+                            android:layout_weight="2.5"
                             android:textColor="@color/color_btn_get_txt"
                             android:backgroundTint="@color/color_btn_get_config"
                             android:focusable="true"
-                            android:nextFocusLeft="@+id/recycler_view"
-                            android:text="@string/btn_get_rotating_config" />
+                            android:nextFocusLeft="@+id/login_username_button"
+                            android:text="@string/free_config" />
 
-
-                        <Button
-                            android:id="@+id/test_rot_config_button7"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="1dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/color_btn_test_txt"
-                            android:backgroundTint="@color/color_btn_test_config"
-                            android:focusable="true"
-                            android:nextFocusLeft="@+id/get_rot_config_button7"
-                            android:text="@string/btn_test_rotating_config" />
-
-                        <Button
-                            android:id="@+id/sort_rot_config_button7"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="1dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/color_btn_sort_txt"
-                            android:backgroundTint="@color/color_btn_sort_config"
-                            android:focusable="true"
-                            android:nextFocusLeft="@+id/test_rot_config_button7"
-                            android:text="@string/btn_sort_rotating_config" />
-
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.15" />
-
-
-                        <Button
-                            android:id="@+id/filter_sub_button7"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:padding="5dp"
-                            android:layout_weight="1.7"
-                            android:textColor="@color/color_btn_subfilter_txt"
-                            android:textAllCaps="false"
-                            android:textStyle="bold"
-                            android:backgroundTint="@color/color_btn_subfilter_spinner"
-                            android:focusable="true"
-                            android:nextFocusDown="@+id/fab"
-                            android:nextFocusLeft="@+id/sort_rot_config_button7"
-                            android:maxLines="2"
-                            android:text="" />
 
                         <Space
                             android:layout_width="0dp"
@@ -226,10 +148,10 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
-                    android:contentDescription="M connect button"
+                    android:contentDescription="connect button"
                     android:focusable="true"
                     android:nextFocusLeft="@+id/layout_test"
-                    android:src="@drawable/ic_stat_name_m2"
+                    android:src="@drawable/ic_spear_icon"
                     app:layout_anchorGravity="bottom|right|end" />
 
 

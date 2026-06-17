@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">MahsaNG</string>
+    <string name="app_name" translatable="false">BlacKTun</string>
     <string name="app_widget_name">تعویض</string>
     <string name="app_tile_name">تعویض</string>
     <string name="app_tile_first_use">برای اولین بار از این ویژگی استفاده می‌کنید، لطفا از برنامه برای افزودن سرور استفاده کنید</string>
@@ -257,6 +257,14 @@
     <string name="import_subscription_failure">ذخیره اشتراک ناموفق بود</string>
 
 
+    <string name="title_telegram_channel">کانال تلگرام: t.me/DesignHesam</string>
+    <string name="title_saifon_settings">تنظیمات سایفون</string>
+    <string name="title_dns_scanner">اسکنر DNS</string>
+    <string name="login_with_username">ورود با نام کاربری</string>
+    <string name="free_config">کانفیگ رایگان</string>
+    <string name="enter_username">نام کاربری را وارد کنید</string>
+    <string name="invalid_username">نام کاربری اشتباه است</string>
+    <string name="config_loaded_success">کانفیگ ها با موفقیت لود شدند</string>
     <string name="title_GFW_settings">تنظیمات GFW</string>
     <string name="title_GFW_update">آپدیت پارامترهای GFW</string>
     <string name="title_GFW_free_config">دریافت کانفیگ رایگان</string>

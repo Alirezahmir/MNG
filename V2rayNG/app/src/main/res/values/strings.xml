@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">MahsaNG</string>
+    <string name="app_name" translatable="false">BlacKTun</string>
     <string name="app_widget_name">Switch</string>
     <string name="app_tile_name">Switch</string>
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
@@ -135,7 +135,7 @@
     <string name="summary_pref_sniffing_enabled">Try sniff domain from the packet (default on)</string>
 
     <string name="title_pref_local_dns_enabled">Enable local DNS</string>
-    <string name="summary_pref_local_dns_enabled">DNS processed by core‘s DNS module (Recommended, if need routing Bypassing LAN and
+    <string name="summary_pref_local_dns_enabled">DNS processed by core's DNS module (Recommended, if need routing Bypassing LAN and
         mainland address)</string>
 
     <string name="title_pref_fake_dns_enabled">Enable fake DNS</string>
@@ -162,7 +162,7 @@
     <string name="toast_warning_pref_proxysharing_short">Allow connections from the LAN, Make sure you are in a trusted network</string>
 
     <string name="title_pref_allow_insecure" translatable="false">Disable Allow Insecure</string>
-    <string name="summary_pref_allow_insecure" translatable="false">Verify config\'s cert, Don\'t allow self-signed config</string>
+    <string name="summary_pref_allow_insecure" translatable="false">Verify config's cert, Don't allow self-signed config</string>
 
     <string name="title_pref_socks_port">SOCKS5 proxy port</string>
     <string name="summary_pref_socks_port">SOCKS5 proxy port</string>
@@ -184,9 +184,6 @@
     <string name="summary_pref_tg_group">Join Telegram Group</string>
     <string name="toast_tg_app_not_found">Telegram app not found</string>
 
-    <string name="title_pref_promotion">Promotion</string>
-    <string name="summary_pref_promotion">Promotion,click for details(Donation can be removed)</string>
-
     <string name="title_core_loglevel">Log Level</string>
     <string name="title_mode">Mode</string>
     <string name="title_mode_help">Click me for more help</string>
@@ -201,7 +198,7 @@
     <string name="title_del_all_config">Delete all configs</string>
     <string name="title_del_current_group_config">Delete current configs</string>
     <string name="title_clear_test_result">clear current test result</string>
-    <string name="title_cant_delete_selected">can\'t delete, because its selected</string>
+    <string name="title_cant_delete_selected">can't delete, because its selected</string>
     <string name="title_del_duplicate_config">Delete duplicate configs</string>
     <string name="title_del_invalid_config">Delete invalid configs(Test first)</string>
     <string name="title_export_all">Export non-custom configs to clipboard</string>
@@ -270,8 +267,6 @@
     <string name="block_malicious_turned_off">routing rules reset to default\niranian domains directed by default\nturn vpn on-off to take effect</string>
 
     <string name="title_network_tools">Network tools</string>
-
-
     <string name="title_GFW_tunnel_config">get EMS config</string>
     <string name="title_GFW_youtube_config">add youtube config</string>
     <string name="remote_config_url">https://raw.githubusercontent.com/GFW-knocker/MahsaNG/master/remote_config_update_v13.json</string>
@@ -293,7 +288,7 @@
     <string name="empty_config_list_toast">please GET CONFIG first</string>
 
     <string name="warning_mux_on">"please turn off mux\nmost configs not work with mux"</string>
-    <string name="warning_warp_on">\"warp\" is on.\nif any problem, turn it off</string>
+    <string name="warning_warp_on">"warp" is on.\nif any problem, turn it off</string>
 
     <string name="description1" translatable="false">"با زدن آپدیت ، پارامترهای برنامه بروز خواهد شد. در صورتی که سرورها به هر دلیلی قطع شوند و نیاز به آپدیت باشد در کانال t.me/mahsa_net اطلاع رسانی میکنیم. به امید آزادی."</string>
     <string name="description2" translatable="false">"در صفحه اصلی اپلیکیشن شما میتوانید بطور اتوماتیک کانفیگ های چرخشی هوشمند و مناسب نت خود دریافت کنید. در صورت قطعی میتوانید از منوی YeBeKhe هم کانفیگ بگیرید. برای محتوای آموزشی بیشتر به سایت رسمی ما www.mahsaserver.com و یا کانال تلگرام رسمی ما t.me/mahsa_net مراجعه فرمایید. "</string>
@@ -312,20 +307,29 @@
 
 
     <string name="initial_agreement1" translatable="false">By using this software you agree with the following terms:</string>
-    <string name="initial_agreement2" translatable="false">MahsaNG uses \"vpn service\" to provide internet freedom for you.</string>
+    <string name="initial_agreement2" translatable="false">MahsaNG uses "vpn service" to provide internet freedom for you.</string>
     <string name="initial_agreement3" translatable="false">MahsaNG does NOT require any sensitive permissions such as contacts, camera, microphone, location, storage, etc.</string>
     <string name="initial_agreement4" translatable="false">MahsaNG uses anonymous data such as Timezone, OS Version, and public IPv4 (first 3 octets only) to provide the best vpn config optimized for your network.</string>
     <string name="initial_agreement5" translatable="false">for more info please visit:</string>
     <string name="initial_agreement6" translatable="false">https://www.mahsaserver.com/terms</string>
     <string name="initial_agreement7" translatable="false">https://www.mahsaserver.com/privacy</string>
 
-    <string name="captcha_title">I\'m not a robot</string>
+    <string name="captcha_title">I'm not a robot</string>
     <string name="captcha_submit">submit</string>
     <string name="captcha_cancel">cancel</string>
     <string name="toast_clipboard_menu">adding config/sub from clipboard</string>
 
     <string name="core_version_info" translatable="false">v%1$s (%2$s)</string>
     <string name="core_version_hardcoded" translatable="false">v13 (Mahsa-Core v25.4.30-r2)</string>
+
+    <string name="telegram_channel">Telegram Channel: t.me/DesignHesam</string>
+    <string name="saifon_settings">Saifon Settings</string>
+    <string name="dns_scanner">DNS Scanner</string>
+    <string name="login_with_username">Login with Username</string>
+    <string name="free_config">Free Config</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="config_loaded_success">Configs loaded successfully</string>
 
     <string-array name="num_fragment_list">
         <item>7</item>
@@ -394,7 +398,6 @@
         <item>digitalocean.com</item>
         <item>discord.com</item>
         <item>medium.com</item>
-
     </string-array>
 
     <string-array name="share_method">
@@ -433,25 +436,28 @@
         <item>Dark</item>
     </string-array>
 
-    <!-- Settings Activity Title -->
-    <string name="title_activity_gfw_setting">GFW_setting_Activity</string>
+    <string name="title_telegram_channel">Telegram Channel: t.me/DesignHesam</string>
+    <string name="title_saifon_settings">Saifon Settings</string>
+    <string name="title_dns_scanner">DNS Scanner</string>
+    <string name="login_with_username">Login with Username</string>
+    <string name="free_config">Free Config</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="config_loaded_success">Configs loaded successfully</string>
 
-    <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
 
-    <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
 
-    <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_gfw_update">GFW_update_Activity</string>
-    <!-- Strings used for fragments for navigation -->
+
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
