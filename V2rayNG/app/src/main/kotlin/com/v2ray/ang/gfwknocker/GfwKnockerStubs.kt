@@ -20,7 +20,7 @@ class config_pkg_reader(
 ) {
     fun fetch_json_config(useSharedPreference: Boolean) = Unit
 
-    fun get_offline_DNS(isp: String): String = "https://dns.google/dns-query"
+    fun get_offline_DNS(isp: String): MutableMap<String, Any> = mutableMapOf("google.com" to "8.8.8.8")
 
     fun get_doh_url(isp: String): String = "https://dns.google/dns-query"
 

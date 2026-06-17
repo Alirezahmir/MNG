@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.core.content.ContextCompat
 import com.v2ray.ang.AngApplication
 
 fun AngApplication.listenForPackageChanges(action: () -> Unit): BroadcastReceiver {
@@ -21,7 +22,7 @@ fun AngApplication.listenForPackageChanges(action: () -> Unit): BroadcastReceive
         addDataScheme("package")
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        registerReceiver(receiver, filter, PackageManager.RECEIVER_EXPORTED)
+        registerReceiver(receiver, filter, ContextCompat.RECEIVER_EXPORTED)
     } else {
         registerReceiver(receiver, filter)
     }

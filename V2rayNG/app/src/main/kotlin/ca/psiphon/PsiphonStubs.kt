@@ -1,25 +1,46 @@
 package ca.psiphon
 
-abstract class PsiphonTunnel {
-    abstract class HostService {
-        open fun loadLibrary(library: String?) = Unit
-        open fun getContext(): android.content.Context = throw NotImplementedError()
-        open fun getPsiphonConfig(): String = "{}"
-        open fun bindToDevice(fileDescriptor: Long) = Unit
-        open fun onConnecting() = Unit
-        open fun onConnected() = Unit
-        open fun onExiting() = Unit
-        open fun onListeningSocksProxyPort(port: Int) = Unit
-        open fun onListeningHttpProxyPort(port: Int) = Unit
-        open fun onUpstreamProxyError(message: String?) = Unit
-        open fun onDiagnosticMessage(message: String?) = Unit
-        open fun onStartedWaitingForNetworkConnectivity() = Unit
-        open fun onStoppedWaitingForNetworkConnectivity() = Unit
-        open fun onClientRegion(region: String?) = Unit
-        open fun onConnectedServerRegion(region: String?) = Unit
+object PsiphonTunnel {
+    fun newPsiphonTunnel(hostService: HostService): PsiphonTunnelInstance = PsiphonTunnelInstance()
+    fun setClientPlatformAffixes(clientPlatform: String, clientSuffix: String) = Unit
+    fun setVpnMode(vpnMode: Boolean) = Unit
+    fun startTunneling(serverEntries: String) = Unit
+
+    interface HostService {
+        fun loadLibrary(library: String?) = Unit
+        fun getContext(): android.content.Context = throw NotImplementedError()
+        fun getPsiphonConfig(): String = "{}"
+        fun bindToDevice(fileDescriptor: Long) = Unit
+        fun onConnecting() = Unit
+        fun onConnected() = Unit
+        fun onExiting() = Unit
+        fun onListeningSocksProxyPort(port: Int) = Unit
+        fun onListeningHttpProxyPort(port: Int) = Unit
+        fun onUpstreamProxyError(message: String?) = Unit
+        fun onDiagnosticMessage(message: String?) = Unit
+        fun onStartedWaitingForNetworkConnectivity() = Unit
+        fun onStoppedWaitingForNetworkConnectivity() = Unit
+        fun onClientRegion(region: String?) = Unit
+        fun onConnectedServerRegion(region: String?) = Unit
     }
+}
+
+class PsiphonTunnelInstance {
+    fun startTunneling(serverEntries: String) = Unit
+    fun stop() = Unit
 }
 
 object Tun2SocksJniLoader {
     fun loadLibrary() = Unit
+    fun runTun2Socks(
+        tunFd: Int,
+        mtu: Int,
+        netifIpAddr: String,
+        netmask: String,
+        ipv6Address: String?,
+        socksServerAddress: String,
+        udpgwServerAddress: String,
+        enableTransparentDns: Int
+    ) = Unit
+    fun terminateTun2Socks() = Unit
 }

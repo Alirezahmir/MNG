@@ -2,13 +2,13 @@ package com.v2ray.ang.gfwknocker
 
 import android.app.Service
 import android.content.Context
-import com.v2ray.ang.AppConfig
+import com.v2ray.ang.AngApplication
 import com.v2ray.ang.R
 import com.v2ray.ang.util.MessageUtil
 
 
 class backServ(
-    ctx1: Context? = null,
+    ctx1: Context = AngApplication.application,
     svc1: Service? = null,
     target_ip: String = "1.1.1.1",
     target_port: Int = 443,

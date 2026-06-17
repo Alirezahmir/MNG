@@ -109,6 +109,10 @@ data class V2rayConfig(
             var portHopping: String? = null,
             var portHoppingInterval: String? = null,
             var pinSHA256: String? = null,
+            var wnoise: String? = null,
+            var wnoisecount: Int? = null,
+            var wnoisedelay: Int? = null,
+            var wpayloadsize: String? = null,
         ) {
 
             data class VnextBean(
@@ -415,7 +419,7 @@ data class V2rayConfig(
 
             fun populateTlsSettings(
                 streamSecurity: String, allowInsecure: Boolean, sni: String, fingerprint: String?, alpns: String?,
-                publicKey: String?, shortId: String?, spiderX: String?
+                publicKey: String?, shortId: String?, spiderX: String?, echConfigList: String?, echServerKeys: String?, echForceQuery: String?
             ) {
                 security = streamSecurity
                 val tlsSetting = TlsSettingsBean(
@@ -425,7 +429,10 @@ data class V2rayConfig(
                     alpn = if (alpns.isNullOrEmpty()) null else alpns.split(",").map { it.trim() }.filter { it.isNotEmpty() },
                     publicKey = publicKey,
                     shortId = shortId,
-                    spiderX = spiderX
+                    spiderX = spiderX,
+                    echConfigList = echConfigList,
+                    echServerKeys = echServerKeys,
+                    echForceQuery = echForceQuery
                 )
                 if (security == TLS) {
                     tlsSettings = tlsSetting

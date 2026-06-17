@@ -4,6 +4,8 @@ object Libv2ray {
     fun newV2RayPoint(callback: V2RayVPNServiceSupportsSet, enableTun: Boolean): V2RayPoint = V2RayPoint()
     fun initV2Env(assetPath: String) = Unit
     fun measureOutboundDelay(config: String): Long = -1L
+    fun measureDelay(config: String): Long = -1L
+    fun queryStats(tag: String): String = ""
     fun checkVersionX(): String = "stub"
 }
 
@@ -19,6 +21,10 @@ class V2RayPoint {
     fun stopLoop() {
         isRunning = false
     }
+
+    fun measureDelay(): Long = -1L
+
+    fun queryStats(tag: String, direct: String): Long = 0L
 }
 
 interface V2RayVPNServiceSupportsSet {

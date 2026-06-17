@@ -751,7 +751,7 @@ class ServerActivity : BaseActivity() {
                         return false
                     }
                 }
-                config.outboundBean?.populateMux(stat = "ON", concr = m8)
+                config.outboundBean?.populateMux(stat = "ON", concr = m81)
             }
 
         }
