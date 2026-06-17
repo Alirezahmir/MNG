@@ -428,13 +428,13 @@ class ServerActivity : BaseActivity() {
             if (outbound.settings?.wnoisecount == null) {
                 et_wnoisecount?.text = Utils.getEditable(WIREGUARD_wnoisecount)
             } else {
-                et_wnoisecount?.text = Utils.getEditable(outbound.settings?.wnoisecount.orEmpty())
+                et_wnoisecount?.text = Utils.getEditable(outbound.settings?.wnoisecount?.toString().orEmpty())
             }
 
             if (outbound.settings?.wnoisedelay == null) {
                 et_wnoisedelay?.text = Utils.getEditable(WIREGUARD_wnoisedelay)
             } else {
-                et_wnoisedelay?.text = Utils.getEditable(outbound.settings?.wnoisedelay.orEmpty())
+                et_wnoisedelay?.text = Utils.getEditable(outbound.settings?.wnoisedelay?.toString().orEmpty())
             }
 
             if (outbound.settings?.wpayloadsize == null) {
@@ -823,8 +823,8 @@ class ServerActivity : BaseActivity() {
 
         wireguard.peers?.get(0)?.keepAlive = Utils.parseInt(et_keepalive?.text.toString())
         wireguard.wnoise = et_wnoise?.text.toString().trim()
-        wireguard.wnoisecount = et_wnoisecount?.text.toString().trim()
-        wireguard.wnoisedelay = et_wnoisedelay?.text.toString().trim()
+        wireguard.wnoisecount = Utils.parseInt(et_wnoisecount?.text.toString())
+        wireguard.wnoisedelay = Utils.parseInt(et_wnoisedelay?.text.toString())
         wireguard.wpayloadsize = et_wpayloadsize?.text.toString().trim()
     }
 

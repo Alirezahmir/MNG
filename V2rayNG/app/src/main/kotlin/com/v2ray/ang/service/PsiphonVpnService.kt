@@ -262,7 +262,7 @@ class PsiphonVpnService : VpnService(), PsiphonTunnel.HostService {
         val routingMode = settingsStorage?.decodeString(AppConfig.PREF_ROUTING_MODE)
             ?: ERoutingMode.GLOBAL_PROXY.value
 
-        val builder = VpnService.Builder()
+        val builder = android.net.VpnService.Builder()
         builder.setMtu(VPN_MTU)
         builder.addAddress(PRIVATE_VLAN4_CLIENT, 24)
 
