@@ -7,7 +7,15 @@ import com.v2ray.ang.R
 import com.v2ray.ang.util.MessageUtil
 
 
-class backServ(ctx1 : Context , svc1 : Service , target_ip : String , target_port : Int , nfrag : Int , sleepfrag : Double , is_youtube : Boolean ){
+class backServ(
+    ctx1: Context? = null,
+    svc1: Service? = null,
+    target_ip: String = "1.1.1.1",
+    target_port: Int = 443,
+    nfrag: Int = 0,
+    sleepfrag: Double = 0.0,
+    is_youtube: Boolean = false
+) {
     private var DoH_service: DoH_over_Fragment? = null
     private var HTTPS_serv: HTTPS_Fragmentor? = null
     private var TLS_serv: TLS_Fragmentor? = null

@@ -160,7 +160,7 @@ object PluginManager {
     private fun initNativeFaster(provider: ProviderInfo): String? {
         return provider.loadString(PluginContract.METADATA_KEY_EXECUTABLE_PATH)
             ?.let { relativePath ->
-                File(provider.applicationInfo.nativeLibraryDir).resolve(relativePath).apply {
+                File(provider.applicationInfo.nativeLibraryDir as String).resolve(relativePath).apply {
                     check(canExecute())
                 }.absolutePath
             }
@@ -206,7 +206,7 @@ object PluginManager {
             } while (cursor.moveToNext())
         }
         if (!initialized) entryNotFound()
-        return File(pluginDir, pluginId).absolutePath
+        return File(pluginDir as File, pluginId).absolutePath
     }
 
     fun ComponentInfo.loadString(key: String) = when (val value = metaData.get(key)) {

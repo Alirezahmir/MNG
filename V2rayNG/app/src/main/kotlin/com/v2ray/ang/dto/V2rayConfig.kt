@@ -106,6 +106,9 @@ data class V2rayConfig(
             var reserved: List<Int>? = null,
             var mtu: Int? = null,
             var obfsPassword: String? = null,
+            var portHopping: String? = null,
+            var portHoppingInterval: String? = null,
+            var pinSHA256: String? = null,
         ) {
 
             data class VnextBean(
@@ -127,7 +130,9 @@ data class V2rayConfig(
             data class FragmentBean(
                 var packets: String? = null,
                 var length: String? = null,
-                var interval: String? = null
+                var interval: String? = null,
+                var host1_domain: String? = null,
+                var status: String = "OFF"
             )
 
             data class NoiseBean(
@@ -159,7 +164,13 @@ data class V2rayConfig(
 
             data class WireGuardBean(
                 var publicKey: String = "",
-                var endpoint: String = ""
+                var endpoint: String = "",
+                var preSharedKey: String? = null,
+                var keepAlive: Int? = null,
+                var wnoise: String? = null,
+                var wnoisecount: Int? = null,
+                var wnoisedelay: Int? = null,
+                var wpayloadsize: String? = null
             )
         }
 
@@ -276,7 +287,10 @@ data class V2rayConfig(
                 val show: Boolean = false,
                 var publicKey: String? = null,
                 var shortId: String? = null,
-                var spiderX: String? = null
+                var spiderX: String? = null,
+                var echConfigList: String? = null,
+                var echServerKeys: String? = null,
+                var echForceQuery: String? = null
             )
 
             data class QuicSettingBean(
@@ -428,6 +442,7 @@ data class V2rayConfig(
             var concurrency: Int = 8,
             var xudpConcurrency: Int = 8,
             var xudpProxyUDP443: String = "",
+            var status: String = "OFF"
         )
 
         fun getServerAddress(): String? {

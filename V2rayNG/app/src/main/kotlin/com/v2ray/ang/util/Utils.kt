@@ -438,6 +438,10 @@ object Utils {
         }
     }
 
+    fun validate_port(port: Int): Int = port.coerceIn(1, 65535)
+
+    fun fragment_param_check(value: String): Boolean = value.isNotBlank() && value.toIntOrNull() != null && value.toInt() >= 0
+
     fun GFW_correct_url_protocol(myurl: String): String{
         var new_url = ""
         if(  myurl.startsWith("https://") || myurl.startsWith("http://")  ){

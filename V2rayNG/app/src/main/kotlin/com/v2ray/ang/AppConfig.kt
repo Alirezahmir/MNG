@@ -43,6 +43,24 @@ object AppConfig {
 
     const val HTTP_PROTOCOL: String = "http://"
     const val HTTPS_PROTOCOL: String = "https://"
+    const val PROTOCOL_HTTP: String = HTTP_PROTOCOL
+    const val PROTOCOL_HTTPS: String = HTTPS_PROTOCOL
+
+    const val WIREGUARD_LOCAL_ADDRESS_V4 = "fd00::1"
+    const val WIREGUARD_LOCAL_ADDRESS_V6 = "fd00::2"
+    const val WIREGUARD_LOCAL_MTU = "1280"
+    const val WIREGUARD_keep_alive = "5"
+    const val WIREGUARD_wnoise = "quic"
+    const val WIREGUARD_wnoisecount = "15"
+    const val WIREGUARD_wnoisedelay = "1"
+    const val WIREGUARD_wpayloadsize = "5-10"
+
+    const val PREF_UI_MODE_NIGHT = "pref_ui_mode_night"
+    const val DelayTestUrl = "https://www.google.com/generate_204"
+    const val DelayTestUrl2 = "https://www.gstatic.com/generate_204"
+
+    const val PSIPHON_SOCKS = "10808"
+    const val PSIPHON_HTTP = "10809"
 
     const val BROADCAST_ACTION_SERVICE = "com.v2ray.ang.action.service"
     const val BROADCAST_ACTION_ACTIVITY = "com.v2ray.ang.action.activity"

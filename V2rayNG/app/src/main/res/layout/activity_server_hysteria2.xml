@@ -93,7 +93,53 @@
         </LinearLayout>
 
 
+        <include layout="@layout/gfw_fragment_layout" />
+        <include layout="@layout/gfw_mux_layout" />
+
         <include layout="@layout/layout_tls_hysteria2" />
+
+        <LinearLayout
+            android:id="@+id/l_ech"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_top_height"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ECH config list" />
+
+            <EditText
+                android:id="@+id/et_echConfigList"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_height"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_top_height"
+                android:text="ECH server keys" />
+
+            <EditText
+                android:id="@+id/et_echServerKeys"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_height"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_top_height"
+                android:text="ECH force query" />
+
+            <EditText
+                android:id="@+id/et_echForceQuery"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_height"
+                android:inputType="text" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
