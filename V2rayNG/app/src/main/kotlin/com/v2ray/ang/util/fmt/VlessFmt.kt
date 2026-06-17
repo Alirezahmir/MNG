@@ -163,7 +163,7 @@ object VlessFmt {
         val url = String.format(
             "%s@%s:%s",
             outbound.getPassword(),
-            Utils.getIpv6Address(outbound.getServerAddress()),
+            Utils.getIpv6Address(outbound.getServerAddress().orEmpty()),
             outbound.getServerPort()
         )
         return url + query + remark

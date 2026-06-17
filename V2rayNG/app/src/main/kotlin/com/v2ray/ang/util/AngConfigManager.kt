@@ -700,7 +700,7 @@ object AngConfigManager {
                     url + remark
                 }
 
-                EConfigType.SOCKS -> {
+                EConfigType.SOCKS, EConfigType.HTTP -> {
                     val remark = "#" + Utils.urlEncode(config.remarks)
                     val pw =
                         if (outbound.settings?.servers?.get(0)?.users?.get(0)?.user != null)
@@ -717,7 +717,9 @@ object AngConfigManager {
                 }
 
                 EConfigType.VLESS,
-                EConfigType.TROJAN -> {
+                EConfigType.MVLESS,
+                EConfigType.TROJAN,
+                EConfigType.HYSTERIA2 -> {
                     val remark = "#" + Utils.urlEncode(config.remarks)
 
                     val dicQuery = HashMap<String, String>()

@@ -182,6 +182,7 @@ object V2rayConfigUtil {
                     )
                     v2rayConfig.routing.rules.add(globalDirect)
                 }
+                else -> Unit
             }
         } catch (e: Exception) {
             e.printStackTrace()

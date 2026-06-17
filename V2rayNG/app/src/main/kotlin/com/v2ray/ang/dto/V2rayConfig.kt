@@ -419,7 +419,8 @@ data class V2rayConfig(
 
             fun populateTlsSettings(
                 streamSecurity: String, allowInsecure: Boolean, sni: String, fingerprint: String?, alpns: String?,
-                publicKey: String?, shortId: String?, spiderX: String?, echConfigList: String?, echServerKeys: String?, echForceQuery: String?
+                publicKey: String?, shortId: String?, spiderX: String?,
+                echConfigList: String? = null, echServerKeys: String? = null, echForceQuery: String? = null
             ) {
                 security = streamSecurity
                 val tlsSetting = TlsSettingsBean(
@@ -455,6 +456,7 @@ data class V2rayConfig(
         fun getServerAddress(): String? {
             if (protocol.equals(EConfigType.VMESS.name, true)
                 || protocol.equals(EConfigType.VLESS.name, true)
+                || protocol.equals(EConfigType.MVLESS.name, true)
             ) {
                 return settings?.vnext?.get(0)?.address
             } else if (protocol.equals(EConfigType.SHADOWSOCKS.name, true)
@@ -473,6 +475,7 @@ data class V2rayConfig(
         fun getServerPort(): Int? {
             if (protocol.equals(EConfigType.VMESS.name, true)
                 || protocol.equals(EConfigType.VLESS.name, true)
+                || protocol.equals(EConfigType.MVLESS.name, true)
             ) {
                 return settings?.vnext?.get(0)?.port
             } else if (protocol.equals(EConfigType.SHADOWSOCKS.name, true)
@@ -497,6 +500,7 @@ data class V2rayConfig(
         fun getPassword(): String? {
             if (protocol.equals(EConfigType.VMESS.name, true)
                 || protocol.equals(EConfigType.VLESS.name, true)
+                || protocol.equals(EConfigType.MVLESS.name, true)
             ) {
                 return settings?.vnext?.get(0)?.users?.get(0)?.id
             } else if (protocol.equals(EConfigType.SHADOWSOCKS.name, true)
@@ -517,7 +521,7 @@ data class V2rayConfig(
         fun getSecurityEncryption(): String? {
             return when {
                 protocol.equals(EConfigType.VMESS.name, true) -> settings?.vnext?.get(0)?.users?.get(0)?.security
-                protocol.equals(EConfigType.VLESS.name, true) -> settings?.vnext?.get(0)?.users?.get(0)?.encryption
+                protocol.equals(EConfigType.VLESS.name, true) || protocol.equals(EConfigType.MVLESS.name, true) -> settings?.vnext?.get(0)?.users?.get(0)?.encryption
                 protocol.equals(EConfigType.SHADOWSOCKS.name, true) -> settings?.servers?.get(0)?.method
                 else -> null
             }
@@ -526,6 +530,7 @@ data class V2rayConfig(
         fun getTransportSettingDetails(): List<String>? {
             if (protocol.equals(EConfigType.VMESS.name, true)
                 || protocol.equals(EConfigType.VLESS.name, true)
+                || protocol.equals(EConfigType.MVLESS.name, true)
                 || protocol.equals(EConfigType.TROJAN.name, true)
                 || protocol.equals(EConfigType.SHADOWSOCKS.name, true)
             ) {

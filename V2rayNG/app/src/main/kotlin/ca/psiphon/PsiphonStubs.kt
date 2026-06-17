@@ -1,11 +1,6 @@
 package ca.psiphon
 
-object PsiphonTunnel {
-    fun newPsiphonTunnel(hostService: HostService): PsiphonTunnelInstance = PsiphonTunnelInstance()
-    fun setClientPlatformAffixes(clientPlatform: String, clientSuffix: String) = Unit
-    fun setVpnMode(vpnMode: Boolean) = Unit
-    fun startTunneling(serverEntries: String) = Unit
-
+class PsiphonTunnel private constructor(private val hostService: HostService) : HostService {
     interface HostService {
         fun loadLibrary(library: String?) = Unit
         fun getContext(): android.content.Context = throw NotImplementedError()
@@ -23,9 +18,13 @@ object PsiphonTunnel {
         fun onClientRegion(region: String?) = Unit
         fun onConnectedServerRegion(region: String?) = Unit
     }
-}
 
-class PsiphonTunnelInstance {
+    companion object {
+        fun newPsiphonTunnel(hostService: HostService): PsiphonTunnel = PsiphonTunnel(hostService)
+    }
+
+    fun setClientPlatformAffixes(clientPlatform: String, clientSuffix: String) = Unit
+    fun setVpnMode(vpnMode: Boolean) = Unit
     fun startTunneling(serverEntries: String) = Unit
     fun stop() = Unit
 }

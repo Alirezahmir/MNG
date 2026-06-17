@@ -94,11 +94,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
 
-        binding.login_username_button.setOnClickListener {
+        binding.loginUsernameButton?.setOnClickListener {
             showUsernameDialog()
         }
 
-        binding.get_rot_config_button7.setOnClickListener {
+        binding.getRotConfigButton7?.setOnClickListener {
             fetchFreeConfigs()
         }
 
@@ -112,7 +112,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
-        binding.version.text = "BlacKTun"
+        binding.version?.text = "BlacKTun"
 
         setupViewModel()
         copyAssets()
@@ -533,7 +533,7 @@ override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
 
     fun showCircle() {
-        binding.fabProgressCircle.show()
+        binding.fabProgressCircle?.show()
     }
 
     fun hideCircle() {
@@ -542,8 +542,8 @@ override fun onCreateOptionsMenu(menu: Menu): Boolean {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         try {
-                            if (binding.fabProgressCircle.isShown) {
-                                binding.fabProgressCircle.hide()
+                            if (binding.fabProgressCircle?.isShown == true) {
+                                binding.fabProgressCircle?.hide()
                             }
                         } catch (e: Exception) {
                             Log.w(ANG_PACKAGE, e)
