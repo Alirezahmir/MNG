@@ -28,18 +28,3 @@ class PsiphonTunnel private constructor(private val hostService: HostService) {
     fun startTunneling(serverEntries: String) = Unit
     fun stop() = Unit
 }
-
-object Tun2SocksJniLoader {
-    fun loadLibrary() = Unit
-    fun runTun2Socks(
-        tunFd: Int,
-        mtu: Int,
-        netifIpAddr: String,
-        netmask: String,
-        ipv6Address: String?,
-        socksServerAddress: String,
-        udpgwServerAddress: String,
-        enableTransparentDns: Int
-    ) = Unit
-    fun terminateTun2Socks() = Unit
-}
