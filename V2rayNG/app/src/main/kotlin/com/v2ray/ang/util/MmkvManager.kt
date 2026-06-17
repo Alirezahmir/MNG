@@ -125,6 +125,13 @@ object MmkvManager {
         return 1
     }
 
+    fun import_Mahsa_Subscription(remarks: String): String {
+        val subItem = SubscriptionItem()
+        subItem.remarks = remarks
+        subItem.url = ""
+        return subStorage?.encode(Utils.getUuid(), Gson().toJson(subItem)).orEmpty()
+    }
+
     fun decodeSubscriptions(): List<Pair<String, SubscriptionItem>> {
         val subscriptions = mutableListOf<Pair<String, SubscriptionItem>>()
         subStorage?.allKeys()?.forEach { key ->

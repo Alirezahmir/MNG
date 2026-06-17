@@ -11,6 +11,12 @@ class my_preference_storage(context: Context? = null) {
     fun put_value(key: String, value: String) {
         storage.encode(key, value)
     }
+
+    fun put_array(key: String, value: Array<String>) {
+        storage.encode(key, value)
+    }
+
+    fun get_array(key: String): Array<String> = storage.decodeStringArray(key) ?: emptyArray()
 }
 
 class config_pkg_reader(
@@ -36,4 +42,17 @@ class GFW_sutil {
 class GFW_txt_crypt {
     fun decode(text: String): String = text
     fun encode(text: String): String = text
+}
+
+object wget_module {
+    @JvmStatic
+    fun auto_routed_fetch_remote_text(url: String?): String = ""
+}
+
+object GFW_client_ip {
+    @JvmStatic
+    fun countryCodeToFlag(code: String?): String = ""
+
+    @JvmStatic
+    fun countryCodeToName(code: String?): String = ""
 }
