@@ -322,11 +322,11 @@
     <string name="core_version_info" translatable="false">v%1$s (%2$s)</string>
     <string name="core_version_hardcoded" translatable="false">v13 (Mahsa-Core v25.4.30-r2)</string>
 
-    <string name="telegram_channel">Telegram Channel: t.me/DesignHesam</string>
+    <string name="telegram_channel">🛡️</string>
     <string name="saifon_settings">Saifon Settings</string>
     <string name="dns_scanner">DNS Scanner</string>
-    <string name="login_with_username">Login with Username</string>
-    <string name="free_config">Free Config</string>
+    <string name="login_with_username">👤 Login</string>
+    <string name="free_config">🎁 Free Config</string>
     <string name="enter_username">Enter Username</string>
     <string name="invalid_username">Invalid username</string>
     <string name="config_loaded_success">Configs loaded successfully</string>

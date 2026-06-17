@@ -257,11 +257,11 @@
     <string name="import_subscription_failure">ذخیره اشتراک ناموفق بود</string>
 
 
-    <string name="title_telegram_channel">کانال تلگرام: t.me/DesignHesam</string>
+    <string name="title_telegram_channel">🛡️</string>
     <string name="title_saifon_settings">تنظیمات سایفون</string>
     <string name="title_dns_scanner">اسکنر DNS</string>
-    <string name="login_with_username">ورود با نام کاربری</string>
-    <string name="free_config">کانفیگ رایگان</string>
+    <string name="login_with_username">👤 ورود</string>
+    <string name="free_config">🎁 کانفیگ رایگان</string>
     <string name="enter_username">نام کاربری را وارد کنید</string>
     <string name="invalid_username">نام کاربری اشتباه است</string>
     <string name="config_loaded_success">کانفیگ ها با موفقیت لود شدند</string>
