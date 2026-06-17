@@ -232,4 +232,44 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="psiphon_country_list" translatable="false">
+        <item>Automatic</item>
+        <item>US</item>
+        <item>DE</item>
+        <item>FR</item>
+        <item>NL</item>
+    </string-array>
+
+    <string-array name="psiphon_protocol_list" translatable="false">
+        <item>Automatic</item>
+        <item>HTTPS</item>
+        <item>SSH</item>
+        <item>Obfuscated</item>
+    </string-array>
+
+    <string-array name="psiphon_aggressive_list" translatable="false">
+        <item>Off</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="dnstt_protocol" translatable="false">
+        <item>Auto</item>
+        <item>DoH</item>
+        <item>DoT</item>
+    </string-array>
+
+    <string-array name="dnstt_permit" translatable="false">
+        <item>Allow</item>
+        <item>Deny</item>
+    </string-array>
+
+    <string-array name="masterdns_encryption_method" translatable="false">
+        <item>Auto</item>
+        <item>None</item>
+        <item>AES-128-GCM</item>
+        <item>CHACHA20-POLY1305</item>
+    </string-array>
 </resources>

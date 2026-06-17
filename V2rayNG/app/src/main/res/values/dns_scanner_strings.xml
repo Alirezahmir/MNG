@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_ready_to_scan">Ready to scan</string>
+    <string name="top_5_best">Top 5 best</string>
+    <string name="start">Start</string>
+</resources>
