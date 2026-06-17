@@ -1,5 +1,6 @@
 *.dat
 *.jks
+!release/hmalirezRelease.jks
 V2rayNG/app/release/output.json
 .idea/
 .gradle/

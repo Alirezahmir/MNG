@@ -1,0 +1,94 @@
+name: Build Universal APK
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: V2rayNG
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Prepare release keystore
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_FILE: ${{ github.workspace }}/release/hmalirezRelease.jks
+        run: |
+          set -euo pipefail
+
+          if [ -n "$RELEASE_KEYSTORE_BASE64" ]; then
+            mkdir -p "$(dirname "$RELEASE_KEYSTORE_FILE")"
+            printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RELEASE_KEYSTORE_FILE"
+            chmod 600 "$RELEASE_KEYSTORE_FILE"
+          elif [ -f "$RELEASE_KEYSTORE_FILE" ]; then
+            chmod 600 "$RELEASE_KEYSTORE_FILE"
+          else
+            echo "::error::Release keystore not found. Add release/hmalirezRelease.jks or set RELEASE_KEYSTORE_BASE64 secret."
+            exit 1
+          fi
+
+      - name: Build universal release APK
+        env:
+          RELEASE_KEYSTORE_FILE: ${{ github.workspace }}/release/hmalirezRelease.jks
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+          RELEASE_KEY_ALIAS: hmalirezReleaseKey
+        run: bash ./gradlew --no-daemon clean assembleProdRelease
+
+      - name: Prepare universal APK
+        run: |
+          set -euo pipefail
+
+          mkdir -p dist
+          shopt -s nullglob
+          apks=(app/build/outputs/apk/prod/release/*universal*.apk)
+
+          if [ "${#apks[@]}" -ne 1 ]; then
+            echo "::error::Expected exactly one universal APK, found ${#apks[@]}."
+            ls -1 app/build/outputs/apk/prod/release || true
+            exit 1
+          fi
+
+          cp "${apks[0]}" dist/v2rayNG-universal.apk
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2rayNG-universal-apk
+          path: dist/v2rayNG-universal.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish GitHub Release
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('release-{0}', github.run_number) }}
+          name: Release ${{ github.ref_name }}
+          files: dist/v2rayNG-universal.apk
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

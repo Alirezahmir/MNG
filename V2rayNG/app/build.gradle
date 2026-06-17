@@ -21,6 +21,20 @@ android {
         versionName "1.8.5"
     }
 
+    signingConfigs {
+        release {
+            def keystoreFile = System.getenv("RELEASE_KEYSTORE_FILE")
+            if (keystoreFile == null || keystoreFile.trim().isEmpty()) {
+                keystoreFile = rootProject.file("../release/hmalirezRelease.jks").absolutePath
+            }
+
+            storeFile file(keystoreFile)
+            storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD") ?: ""
+            keyAlias System.getenv("RELEASE_KEY_ALIAS") ?: "hmalirezReleaseKey"
+            keyPassword System.getenv("RELEASE_KEY_PASSWORD") ?: ""
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -78,7 +92,12 @@ android {
     android.applicationVariants.all { variant ->
         // assign different version code for each output
         variant.outputs.each { output ->
-            output.outputFileName = "v2rayNG_" + variant.versionName + "_" + output.getFilter(com.android.build.OutputFile.ABI) + ".apk"
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
+            if (abi == null) {
+                abi = "universal"
+            }
+
+            output.outputFileName = "v2rayNG_" + variant.versionName + "_" + abi + ".apk"
 
                 output.versionCodeOverride =
                     project.ext.versionCodes.get(output.getFilter(com.android.build.OutputFile.ABI), 0) *
