@@ -439,10 +439,6 @@
     <string name="title_telegram_channel">Telegram Channel: t.me/DesignHesam</string>
     <string name="title_saifon_settings">Saifon Settings</string>
     <string name="title_dns_scanner">DNS Scanner</string>
-    <string name="free_config">Free Config</string>
-    <string name="enter_username">Enter Username</string>
-    <string name="invalid_username">Invalid username</string>
-    <string name="config_loaded_success">Configs loaded successfully</string>
 
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
