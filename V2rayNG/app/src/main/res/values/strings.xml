@@ -181,6 +181,8 @@
 
     <string name="title_pref_feedback">Feedback</string>
     <string name="summary_pref_feedback">Feedback enhancements or bugs to GitHub</string>
+    <string name="title_pref_promotion">Promotion</string>
+    <string name="summary_pref_promotion">Promotion, click for details (Donation can be removed)</string>
     <string name="summary_pref_tg_group">Join Telegram Group</string>
     <string name="toast_tg_app_not_found">Telegram app not found</string>
 
@@ -294,6 +296,7 @@
     <string name="description2" translatable="false">"در صفحه اصلی اپلیکیشن شما میتوانید بطور اتوماتیک کانفیگ های چرخشی هوشمند و مناسب نت خود دریافت کنید. در صورت قطعی میتوانید از منوی YeBeKhe هم کانفیگ بگیرید. برای محتوای آموزشی بیشتر به سایت رسمی ما www.mahsaserver.com و یا کانال تلگرام رسمی ما t.me/mahsa_net مراجعه فرمایید. "</string>
     <string name="description3" translatable="false">"برای حمایت از سازنده کانفیگ ، در پیج یا کانال معرفی شده عضو شوید. با این کار کوچک ، در تامین هزینه سرور و ساخت کانفیگ های رایگان مشارکت میکنید. توجه کنید که اگر vpn ساز ضرر کند کانفیگ رایگانی ساخته نخواهد شد. برای دریافت کانفیگ رایگان دکمه پایین را بزنید هم با فلترشکن خاموش هم روشن"</string>
     <string name="description41" translatable="false">"کانفیگ یوتیوب را با دکمه پایین به برنامه اضافه کنید. این کانفیگ بدون سرور ، دسترسی مستقیم و پرسرعت به یوتیوب فراهم میکند . اگر یوتیوب لود نشد چند بار قطع و وصل کنید تا آیپی جدید بگیرد. وگرنه باید از کانفیگ های معمولی سروردار که در صفحه اصلی اپلیکیشن ارائه میشود استفاده کنید"</string>
+    <string name="description4" translatable="false">"کانفیگ یوتیوب را با دکمه پایین به برنامه اضافه کنید. این کانفیگ بدون سرور ، دسترسی مستقیم و پرسرعت به یوتیوب فراهم میکند . اگر سرعت مطلوب نبود باید از کانفیگ های معمولی سروردار که در صفحه اصلی اپلیکیشن ارائه میشود استفاده کنید"</string>
     <string name="description42" translatable="false">"this config directly connect you to youtube and twitter without any server in the middle. it bypass domain filtering and works only if google and CF IPs are not blocked.\n\nsource code:\nhttps://github.com/GFW-knocker/gfw_resist_HTTPS_proxy/\n\nhttps://github.com/XTLS/Xray-examples/tree/main/Serverless-for-Iran\n\ncredit: alidxdy, rrouzbeh, patterniha"</string>
     <string name="description5" translatable="false">"در این صفحه کانفیگ های رایگان به شکل قدیمی دریافت خواهید کرد.(برای دریافت کانفیگهای چرخشی هوشمند از صفحه اصلی اقدام کنید). جهت حمایت از سازنده کانفیگ ، در پیج یا کانال معرفی شده عضو شوید. با این کار کوچک ، در تامین هزینه سرور و ساخت کانفیگ های رایگان مشارکت میکنید. توجه کنید که اگر vpn ساز ضرر کند کانفیگ رایگانی ساخته نخواهد شد. برای دریافت کانفیگ رایگان دکمه پایین را بزنید هم با فلترشکن خاموش هم روشن"</string>
     <string name="description6" translatable="false">"در صورت قطع کامل نت بین الملل ، مهسا شما را از طریق کانفیگ های نت ملی تانل شده یا از طریق استارلینک متصل خواهد کرد. این صفحه برای شرایط جنگی طراحی شده و در زمان صلح کانفیگی ارائه نمیدهد. پس فقط در صورت قطع کامل نت و عدم دسترسی به سرورهای اصلی ، از این صفحه کانفیگ دریافت کنید. عزیزانی که در شرایط قطع کامل نت، میتوانند با کانفیگ های تانل شده یا اتصال به استارلینک به تیم مهسانت کمک کنند ، لطفا از طریق www.mahsaserver.com/contact-us یا کانال تلگرام t.me/mahsa_net به ما پیام دهند"</string>
@@ -451,6 +454,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_gfw_setting">GFW_setting_Activity</string>
     <string name="title_activity_gfw_update">GFW_update_Activity</string>
 
     <string name="first_fragment_label">First Fragment</string>
