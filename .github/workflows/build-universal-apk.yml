@@ -33,24 +33,22 @@ jobs:
       - name: Prepare release keystore
         env:
           RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
-          RELEASE_KEYSTORE_FILE: ${{ github.workspace }}/release/hmalirezRelease.jks
+          RELEASE_KEYSTORE_FILE: ${{ runner.temp }}/hmalirezRelease.jks
         run: |
           set -euo pipefail
 
-          if [ -n "$RELEASE_KEYSTORE_BASE64" ]; then
-            mkdir -p "$(dirname "$RELEASE_KEYSTORE_FILE")"
-            printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RELEASE_KEYSTORE_FILE"
-            chmod 600 "$RELEASE_KEYSTORE_FILE"
-          elif [ -f "$RELEASE_KEYSTORE_FILE" ]; then
-            chmod 600 "$RELEASE_KEYSTORE_FILE"
-          else
-            echo "::error::Release keystore not found. Add release/hmalirezRelease.jks or set RELEASE_KEYSTORE_BASE64 secret."
+          if [ -z "$RELEASE_KEYSTORE_BASE64" ]; then
+            echo "::error::RELEASE_KEYSTORE_BASE64 secret is required."
             exit 1
           fi
 
+          mkdir -p "$(dirname "$RELEASE_KEYSTORE_FILE")"
+          printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RELEASE_KEYSTORE_FILE"
+          chmod 600 "$RELEASE_KEYSTORE_FILE"
+
       - name: Build universal release APK
         env:
-          RELEASE_KEYSTORE_FILE: ${{ github.workspace }}/release/hmalirezRelease.jks
+          RELEASE_KEYSTORE_FILE: ${{ runner.temp }}/hmalirezRelease.jks
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
           RELEASE_KEY_ALIAS: hmalirezReleaseKey
