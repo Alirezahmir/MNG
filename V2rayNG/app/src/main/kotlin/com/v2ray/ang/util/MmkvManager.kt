@@ -129,7 +129,9 @@ object MmkvManager {
         val subItem = SubscriptionItem()
         subItem.remarks = remarks
         subItem.url = ""
-        return subStorage?.encode(Utils.getUuid(), Gson().toJson(subItem)).orEmpty()
+        val id = Utils.getUuid()
+        subStorage?.encode(id, Gson().toJson(subItem))
+        return id
     }
 
     fun decodeSubscriptions(): List<Pair<String, SubscriptionItem>> {

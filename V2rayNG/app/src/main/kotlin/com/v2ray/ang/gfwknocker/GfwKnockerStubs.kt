@@ -13,10 +13,13 @@ class my_preference_storage(context: Context? = null) {
     }
 
     fun put_array(key: String, value: Array<String>) {
-        storage.encode(key, value)
+        storage.encode(key, value.joinToString("\u001F"))
     }
 
-    fun get_array(key: String): Array<String> = storage.decodeStringArray(key) ?: emptyArray()
+    fun get_array(key: String): Array<String> {
+        val value = storage.decodeString(key, "") ?: ""
+        return if (value.isEmpty()) emptyArray() else value.split("\u001F").toTypedArray()
+    }
 }
 
 class config_pkg_reader(
