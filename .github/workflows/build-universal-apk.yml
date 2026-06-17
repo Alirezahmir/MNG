@@ -82,7 +82,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: v2rayNG-universal-apk
-          path: dist/v2rayNG-universal.apk
+          path: V2rayNG/dist/v2rayNG-universal.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -92,7 +92,7 @@ jobs:
         with:
           tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('release-{0}', github.run_number) }}
           name: Release ${{ github.ref_name }}
-          files: dist/v2rayNG-universal.apk
+          files: V2rayNG/dist/v2rayNG-universal.apk
           fail_on_unmatched_files: true
           generate_release_notes: true
           make_latest: true
