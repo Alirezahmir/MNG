@@ -42,8 +42,16 @@ jobs:
             exit 1
           fi
 
-          mkdir -p "$(dirname "$RELEASE_KEYSTORE_FILE")"
-          printf '%s' "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RELEASE_KEYSTORE_FILE"
+          KEYSTORE_B64="$(printf '%s' "$RELEASE_KEYSTORE_BASE64" | tr -d '\r\n[:space:]')"
+          KEYSTORE_B64="${KEYSTORE_B64#RELEASE_KEYSTORE_BASE64=}"
+          KEYSTORE_B64="$(printf '%s' "$KEYSTORE_B64" | tr -cd 'A-Za-z0-9+/=')"
+
+          if [ "${#KEYSTORE_B64}" -eq 0 ] || [ $(( ${#KEYSTORE_B64} % 4 )) -ne 0 ]; then
+            echo "::error::RELEASE_KEYSTORE_BASE64 is invalid. Paste only the base64 value, optionally with the RELEASE_KEYSTORE_BASE64= prefix."
+            exit 1
+          fi
+
+          printf '%s' "$KEYSTORE_B64" | base64 -d > "$RELEASE_KEYSTORE_FILE"
           chmod 600 "$RELEASE_KEYSTORE_FILE"
 
       - name: Build universal release APK
