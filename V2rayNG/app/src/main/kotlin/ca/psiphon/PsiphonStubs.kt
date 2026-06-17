@@ -1,6 +1,6 @@
 package ca.psiphon
 
-class PsiphonTunnel private constructor(private val hostService: HostService) : ca.psiphon.PsiphonTunnel.HostService {
+class PsiphonTunnel private constructor(private val hostService: HostService) {
     interface HostService {
         fun loadLibrary(library: String?) = Unit
         fun getContext(): android.content.Context = throw NotImplementedError()
